@@ -34,6 +34,9 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 - 🧪 **Testing Ready** - Configured with Karma and Jasmine for unit testing
 - 📦 **Production Ready** - Optimized builds for deployment
 - 🔧 **TypeScript** - Full type safety and modern JavaScript features
+- 🔐 **Authentication** - JWT-based authentication with json-server-auth
+- 🗄️ **REST API** - Mock REST API backend powered by json-server
+- 💾 **JSON Database** - File-based JSON database for easy development and testing
 
 ## Screenshots
 
@@ -74,9 +77,18 @@ cd my-app
 npm install
 ```
 
+3. Install backend dependencies:
+```bash
+cd backend
+npm install
+cd ..
+```
+
 ### Development server
 
-To start a local development server, run:
+#### Frontend (Angular)
+
+To start the Angular development server, run:
 
 ```bash
 ng serve
@@ -86,6 +98,31 @@ npm start
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+#### Backend (JSON Server)
+
+To start the JSON Server backend API, run:
+
+```bash
+cd backend
+npm start
+```
+
+The backend server will start on `http://localhost:3001` and provides:
+- RESTful API endpoints for `users` and `assets`
+- JWT-based authentication via json-server-auth
+- CORS enabled for frontend integration
+
+**API Endpoints:**
+- `GET/POST /users` - User management
+- `GET/POST /assets` - Asset management
+- `POST /register` - User registration
+- `POST /login` - User authentication
+- `POST /logout` - User logout
+
+**Default Users:**
+- Email: `john.doe@example.com`, Password: `123456` (Role: USER)
+- Email: `jane.doe@example.com`, Password: `123456` (Role: ADMIN)
+
 ## Tech Stack
 
 <div align="center">
@@ -93,6 +130,7 @@ Once the server is running, open your browser and navigate to `http://localhost:
 ![Angular](https://img.shields.io/badge/Angular-20.3.0-DD0031?logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-3178C6?logo=typescript&logoColor=white)
 ![RxJS](https://img.shields.io/badge/RxJS-7.8.0-B7178C?logo=reactivex&logoColor=white)
+![JSON Server](https://img.shields.io/badge/JSON%20Server-0.17.4-000000?logo=json&logoColor=white)
 ![Karma](https://img.shields.io/badge/Karma-6.4.0-E44235?logo=karma&logoColor=white)
 ![Jasmine](https://img.shields.io/badge/Jasmine-5.9.0-8A4182?logo=jasmine&logoColor=white)
 
@@ -104,6 +142,8 @@ Once the server is running, open your browser and navigate to `http://localhost:
 - **[TypeScript](https://www.typescriptlang.org/)** - Typed superset of JavaScript
 - **[RxJS](https://rxjs.dev/)** - Reactive programming library
 - **[Zone.js](https://github.com/angular/zone.js)** - Execution context for Angular
+- **[JSON Server](https://github.com/typicode/json-server)** - Fake REST API for development and prototyping
+- **[json-server-auth](https://github.com/jeremyben/json-server-auth)** - Authentication middleware for JSON Server
 
 ### Development Tools
 
@@ -115,17 +155,24 @@ Once the server is running, open your browser and navigate to `http://localhost:
 
 ```
 my-app/
+├── backend/             # Backend API server
+│   ├── db.json         # JSON database file
+│   ├── server.js       # JSON Server configuration
+│   └── package.json    # Backend dependencies
 ├── src/
-│   ├── app/              # Application source code
-│   │   ├── app.ts        # Root component
-│   │   ├── app.routes.ts # Routing configuration
-│   │   └── ...
-│   ├── index.html        # Entry HTML file
-│   ├── main.ts          # Application bootstrap
-│   └── styles.css       # Global styles
-├── public/              # Static assets
-├── angular.json         # Angular CLI configuration
-└── package.json         # Project dependencies
+│   ├── app/            # Application source code
+│   │   ├── components/ # Angular components
+│   │   ├── guards/     # Route guards (auth)
+│   │   ├── models/     # Data models
+│   │   ├── services/   # Angular services
+│   │   ├── app.ts      # Root component
+│   │   └── app.routes.ts # Routing configuration
+│   ├── index.html      # Entry HTML file
+│   ├── main.ts        # Application bootstrap
+│   └── styles.css     # Global styles
+├── public/            # Static assets
+├── angular.json       # Angular CLI configuration
+└── package.json       # Frontend dependencies
 ```
 
 ## Development
@@ -188,6 +235,49 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs (e.g., Cypress, Playwright, or Protractor).
 
+## API Documentation
+
+The backend API is powered by JSON Server and provides RESTful endpoints:
+
+### Authentication Endpoints
+
+- `POST /register` - Register a new user
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "password123",
+    "name": "User Name"
+  }
+  ```
+
+- `POST /login` - Authenticate user
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "password123"
+  }
+  ```
+
+- `POST /logout` - Logout user (requires Authorization header)
+
+### Resource Endpoints
+
+- `GET /users` - Get all users (requires authentication)
+- `GET /users/:id` - Get user by ID
+- `POST /users` - Create new user
+- `PUT /users/:id` - Update user
+- `DELETE /users/:id` - Delete user
+
+- `GET /assets` - Get all assets
+- `GET /assets/:id` - Get asset by ID
+- `POST /assets` - Create new asset (requires authentication)
+- `PUT /assets/:id` - Update asset (requires authentication)
+- `DELETE /assets/:id` - Delete asset (requires authentication)
+
+### Database
+
+The database is stored in `backend/db.json` and can be edited directly. Changes are reflected immediately when the server is running.
+
 ## Documentation
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
@@ -197,6 +287,8 @@ For more information on using the Angular CLI, including detailed command refere
 - [Angular Documentation](https://angular.dev)
 - [Angular Style Guide](https://angular.dev/style-guide)
 - [Angular Blog](https://blog.angular.io/)
+- [JSON Server Documentation](https://github.com/typicode/json-server)
+- [json-server-auth Documentation](https://github.com/jeremyben/json-server-auth)
 
 ## Contributing
 

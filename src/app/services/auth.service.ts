@@ -8,7 +8,7 @@ import { AuthResponse, LoginRequest, RegisterRequest, Role, User } from '../mode
 })
 export class AuthService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api'; // Update with your API URL
+  private apiUrl = 'http://localhost:3001/'; // Update with your API URL
   
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
