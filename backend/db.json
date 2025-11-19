@@ -1,0 +1,84 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "role": "USER",
+            "password": "123456"
+        },
+        {
+            "id": 2,
+            "name": "Jane Doe",
+            "email": "jane.doe@example.com",
+            "role": "ADMIN",
+            "password": "123456"
+        }
+    ],
+    "assets": [
+           {
+            "id": 1,
+            "name": "Bitcoin",
+            "description": "Bitcoin is a digital currency that is created and distributed through a peer-to-peer network.",
+            "symbol": "BTC",
+            "type": "crypto",
+            "price": 67.43
+        },
+        {
+            "id": 2,
+            "name": "Ethereum",
+            "description": "Ethereum is a digital currency that is created and distributed through a peer-to-peer network.",
+            "symbol": "ETH",
+            "type": "crypto",
+            "price": 45.82
+        },
+        {
+            "id": 3,
+            "name": "Tesla",
+            "description": "Tesla is a company that makes electric cars.",
+            "symbol": "TSLA",
+            "type": "stock",
+            "price": 89.17
+        },
+        {
+            "id": 4,
+            "name": "Apple",
+            "description": "Apple is a company that makes computers.",
+            "symbol": "AAPL",
+            "type": "stock",
+            "price": 56.29
+        },
+        {
+            "id": 5,
+            "name": "VOO",
+            "description": "VOO is a ETF that tracks the S&P 500 index.",
+            "symbol": "VOO",
+            "type": "stock",
+            "price": 78.91
+        },
+        {
+            "id": 6,
+            "name": "QQQ",
+            "description": "QQQ is a ETF that tracks the Nasdaq 100 index.",
+            "symbol": "QQQ",
+            "type": "ETF",
+            "price": 34.58
+        },
+        {
+            "id": 7,
+            "name": "STAG",
+            "description": "STAG is a REIT that tracks the S&P 500 index.",
+            "symbol": "STAG",
+            "type": "REIT",
+            "price": 92.74
+        },
+        {
+            "id": 8,
+            "name": "AMT",
+            "description": "AMT is a REIT that tracks the S&P 500 index.",
+            "symbol": "AMT",
+            "type": "REIT",
+            "price": 23.17
+        }
+    ]
+}
