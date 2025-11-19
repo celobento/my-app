@@ -13,7 +13,7 @@
 
 <div align="center">
 
-![Angular Logo](https://angular.io/assets/images/logos/angular/angular.svg)
+<img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular Logo" width="150">
 
 **A modern Angular application built with Angular CLI**
 
